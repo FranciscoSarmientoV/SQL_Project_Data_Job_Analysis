@@ -1,5 +1,5 @@
 /*
-Question: What are the most in—demand skills for data analysts?
+Question: What are the most in—demand skills for data analysts and scientist?
 Join job postings to inner join table similar to query 2
 Identify the top 5 in-demand skills for a data analyst.
 Focus on all job postings.
@@ -19,8 +19,8 @@ INNER JOIN skills_job_dim
 INNER JOIN skills_dim
     ON skills_job_dim.skill_id = skills_dim.skill_id
 WHERE
-    job_title_short = 'Data Analyst' AND
-    job_location = 'Anywhere'
+    (job_location = 'Anywhere' OR job_location = 'Bogotá, Bogota, Colombia') AND
+    (job_title_short = 'Data Analyst' OR job_title_short = 'Data Scientist') 
 GROUP BY
     skills
 ORDER BY
