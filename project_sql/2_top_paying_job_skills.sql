@@ -19,7 +19,8 @@ WITH top_10_jobs AS(
     WHERE
       (job_location = 'Anywhere' OR job_location = 'Bogotá, Bogota, Colombia') AND
       (job_title_short = 'Data Analyst' OR job_title_short = 'Data Scientist') AND
-      salary_year_avg IS NOT NULL
+      salary_year_avg IS NOT NULL AND
+      salary_year_avg >= 280000
     ORDER BY
         salary_year_avg DESC
     LIMIT 
@@ -34,6 +35,8 @@ INNER JOIN skills_job_dim
     ON top_10_jobs.job_id = skills_job_dim.job_id
 INNER JOIN skills_dim
     ON skills_job_dim.skill_id = skills_dim.skill_id
+ORDER BY
+    salary_year_avg DESC
 ;
 
 
